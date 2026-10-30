@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guide – LUXAV Group Engine for Zoom</title>
+<style>
+  body { margin: 0; background: #131318; color: #ececf1; font: 16px/1.6 "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 20px 60px; }
+  h1 { font-size: 28px; margin: 0 0 4px; } h2 { font-size: 19px; margin: 32px 0 8px; }
+  p, li { color: #c8c8d4; } a { color: #9d86ff; } .muted { color: #9696a6; font-size: 14px; }
+  nav a { margin-right: 16px; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+<nav><a href="guide.html">Guide</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+<h1>Guide: LUXAV Group Engine for Zoom</h1>
+<p class="muted">Adding, using and removing the app</p>
+
+<p>LUXAV Group Engine is a Windows application for live event production. It joins a Zoom meeting on behalf of a signed-in Zoom user, composes the participants' video into one group layout and sends it to production software such as vMix via OMT or NDI.</p>
+
+<h2>Requirements</h2>
+<ul>
+  <li>Windows 10 or 11 (64-bit) with the LUXAV Group Engine installed (portable folder, no installation needed).</li>
+  <li>A Zoom account that will attend the meeting, for example the production desk's account.</li>
+  <li>For video access, the meeting host must allow livestreaming or local recording for participants.</li>
+</ul>
+
+<h2>Adding the app</h2>
+<ol>
+  <li>Start LUXAV Group Engine and open the <b>Zoom</b> tab.</li>
+  <li>Click <b>Sign in with Zoom</b> ("Mit Zoom anmelden"). Your browser opens the Zoom authorization page.</li>
+  <li>Sign in with your Zoom account and click <b>Allow</b>. The app requests permission to read your user profile (name and e-mail, shown in the app) and to request meeting tokens on your behalf.</li>
+  <li>The browser returns to the app, which now shows the account you are signed in with. The sign-in is kept on this PC until you sign out.</li>
+</ol>
+
+<h2>Using the app</h2>
+<ol>
+  <li>Join the meeting with the Zoom account you signed in with (for example in the Zoom client on the same PC or on a phone). <b>This account must be in the meeting before the app joins.</b></li>
+  <li>In the app, enter the meeting ID or invitation link and the passcode, choose the access mode (<i>Livestream</i> or <i>Recording</i>) and click <b>Join</b>.</li>
+  <li>As host, confirm the request <b>Allow livestream</b> or <b>Allow recording</b> for the app, or make it co-host. Participants see the usual Zoom notice that the meeting is being livestreamed or recorded.</li>
+  <li>Participants with their camera on appear in the group layout automatically. Use the <b>Live</b> tab to pin, feature or hide participants, correct display names and adjust the layout.</li>
+  <li>Click <b>Leave</b> to end. If the signed-in account leaves the meeting, the app leaves too.</li>
+</ol>
+
+<h2>Removing the app</h2>
+<ol>
+  <li>In the app, open the <b>Zoom</b> tab and click <b>Sign out</b> ("Abmelden"). This deletes the stored sign-in from the PC and revokes it at Zoom.</li>
+  <li>To remove the app from your Zoom account completely, sign in to the <a href="https://marketplace.zoom.us">Zoom App Marketplace</a>, go to <b>Manage → Added Apps</b>, find <b>LUXAV Group Engine</b> and click <b>Remove</b>.</li>
+  <li>Optionally delete the <code>data</code> folder of the app to remove local settings such as display names and rules.</li>
+</ol>
+<p>Removing the app stops all access to your Zoom account. No data is kept by LUXAV, because the app does not send data to LUXAV servers. See the <a href="privacy.html">privacy policy</a>.</p>
+
+<h2>Help</h2>
+<p>See <a href="support.html">Support</a>.</p>
+</main>
+</body>
+</html>
