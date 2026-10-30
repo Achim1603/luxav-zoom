@@ -1,0 +1,55 @@
+<!doctype html>
+<!--
+  Weiterleitung der Zoom-Anmeldung an die LUXAV Group Engine auf dem jeweiligen PC.
+  Auf einen eigenen https-Webspace legen (z. B. https://www.luxav.de/zoom-anmeldung.html) und genau diese Adresse
+  in der Zoom-App als OAuth Redirect URL sowie in engine.json unter Zoom.OAuthRedirectUrl eintragen.
+  Die Seite läuft nur im Browser und speichert nichts. Der Anmeldecode ist ohne den PKCE-Schlüssel der Engine wertlos.
+  Den Port der Engine liest sie aus dem state-Parameter ("<port>.<zufall>").
+-->
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>LUXAV Group Engine – Zoom-Anmeldung</title>
+<style>
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #131318; color: #ececf1; font: 16px "Segoe UI", system-ui, sans-serif; }
+  .box { background: #1c1c23; border: 1px solid #30303c; border-radius: 12px; padding: 32px 40px; max-width: 520px; margin: 16px; text-align: center; }
+  h1 { font-size: 20px; margin: 0 0 12px; }
+  p { color: #9696a6; }
+  a.btn { display: inline-block; margin-top: 8px; padding: 10px 18px; border-radius: 8px; background: #7c5cff; color: #fff; text-decoration: none; font-weight: 600; }
+  .bad { color: #e5484d; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1 id="title">Weiter zur LUXAV Group Engine …</h1>
+  <p id="text">Die Zoom-Anmeldung wird an die Engine auf diesem PC übergeben.</p>
+  <a class="btn" id="go" href="#" hidden>Weiter zur Engine</a>
+</div>
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var state = q.get('state') || '';
+    var port = parseInt(state.split('.')[0], 10);
+    if (!(port > 0 && port < 65536)) port = 8090;
+    if (!q.get('code') && !q.get('error')) {
+      document.getElementById('title').textContent = 'Keine Anmeldedaten';
+      document.getElementById('title').className = 'bad';
+      document.getElementById('text').textContent = 'Diese Seite wird nur von Zoom nach der Anmeldung aufgerufen. Bitte die Anmeldung in der LUXAV Group Engine starten.';
+      return;
+    }
+    // Nur die Parameter der Anmeldung weitergeben
+    var out = new URLSearchParams();
+    ['code', 'state', 'error', 'error_description'].forEach(function (k) { if (q.get(k)) out.set(k, q.get(k)); });
+    var target = 'http://127.0.0.1:' + port + '/oauth/callback?' + out.toString();
+    var go = document.getElementById('go');
+    go.href = target;
+    go.hidden = false;
+    document.getElementById('text').textContent = 'Falls es nicht automatisch weitergeht, bitte auf „Weiter zur Engine“ klicken. Die Engine muss auf diesem PC laufen.';
+    location.replace(target);
+  })();
+</script>
+</body>
+</html>
