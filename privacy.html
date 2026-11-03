@@ -10,25 +10,26 @@
   h1 { font-size: 28px; margin: 0 0 4px; } h2 { font-size: 19px; margin: 32px 0 8px; }
   p, li { color: #c8c8d4; } a { color: #9d86ff; } .muted { color: #9696a6; font-size: 14px; }
   nav a { margin-right: 16px; font-size: 14px; }
+  @media print { body { background: #fff; color: #000; } p, li, .muted { color: #222; } a { color: #000; } nav { display: none; } }
 </style>
 </head>
 <body>
 <main>
 <nav><a href="guide.html">Guide</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
 <h1>Privacy Policy</h1>
-<p class="muted">LUXAV Group Engine for Zoom · Last updated: 30 October 2026</p>
+<p class="muted">LUXAV Group Engine for Zoom · Last updated: 3 November 2026</p>
 
 <h2>1. Who we are</h2>
 <p>LUXAV Group Engine ("the app") is a Windows desktop application provided by LUXAV Audiovisuelle Kommunikation GmbH, Am Feldrain 1-3, 34253 Lohfelden, Germany ("LUXAV", "we"), phone +49 561 95189-0, e-mail <a href="mailto:info@luxav.de">info@luxav.de</a>. Our data protection officer can be reached via heyData GmbH, Schützenstraße 5, 10117 Berlin, Germany, <a href="mailto:datenschutz@heydata.eu">datenschutz@heydata.eu</a>. Information on LUXAV's website and other services is available in our general <a href="https://www.luxav.com/datenschutz">privacy policy</a>.</p>
 
 <h2>2. What the app does</h2>
-<p>The app joins a Zoom meeting on behalf of the signed-in Zoom user, receives the participants' video (and optionally the mixed meeting audio) through Zoom's raw data interface after the meeting host has granted permission, and composes it into a group video layout. The result is sent as a video signal (OMT or NDI) to production software, such as vMix, in the operator's local network.</p>
+<p>The app joins a Zoom meeting on behalf of the signed-in Zoom user, receives the participants' video (and optionally the mixed meeting audio) through Zoom's raw data interface after the meeting host has granted permission, and composes it into a group video layout. Optionally, the operator can also output the current speaker, individually selected participants and the content currently shared in the meeting (screen share) as separate video signals. All results are sent as video signals (OMT or NDI) to production software, such as vMix, in the operator's local network.</p>
 
 <h2>3. Data processed and why</h2>
 <ul>
   <li><b>Zoom account data of the signed-in user</b> (name, e-mail address) via the scope <code>user:read:user</code>, only to show in the app which account is signed in.</li>
   <li><b>Zoom tokens</b> via the scope <code>user:read:token</code>: an OAuth refresh token and short-lived access tokens, used to request an "on behalf of" (OBF) token for the specific meeting the app joins. The refresh token is stored only on the operator's PC, encrypted with Windows DPAPI and bound to the Windows user account.</li>
-  <li><b>Meeting data</b>: participant display names, camera and speaking status, participant video and optionally mixed meeting audio. This is processed in memory on the operator's PC to produce the live output. The app itself does not record or store video or audio.</li>
+  <li><b>Meeting data</b>: participant display names, camera and speaking status, participant video, shared screen content (if the operator enables the screen-share feed) and optionally mixed meeting audio. This is processed in memory on the operator's PC to produce the live output. The app itself does not record or store video or audio.</li>
   <li><b>Local settings</b> created by the operator, such as corrected display names, rules for hiding or pinning participants by name and layout settings. They are stored in local files on the operator's PC.</li>
 </ul>
 
